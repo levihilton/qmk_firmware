@@ -30,17 +30,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT         Albatross
 #define DESCRIPTION     An ortholinear, split, 3D-curved keyboard with thumb clusters that is freaking huge.
 
-#define DIODE_DIRECTION ROW2COL
+#define DIODE_DIRECTION COL2ROW
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 16
-#define COL_EXPANDED { false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true }
-#define MATRIX_ONBOARD_ROW_PINS { F0, F1, F4, F5, F6, F7, B6 }
-#define MATRIX_ONBOARD_COL_PINS { B0, B1, B2, B3, B7, D2, D3, C6, 0, 0, 0, 0, 0, 0, 0, 0 }
-#define EXPANDER_COL_REGISTER GPIOA
-#define EXPANDER_ROW_REGISTER GPIOB
-#define MATRIX_EXPANDER_COL_PINS {0, 1, 2, 3, 4, 5, 6, 7}
-#define MATRIX_EXPANDER_ROW_PINS {0, 1, 2, 3, 4, 5, 6}
-#define SOFT_SERIAL_PIN D0
+#define MATRIX_ROW_PINS { F0, F1, F4, F5, F6, F7, B6 }
+#define MATRIX_COL_PINS { C6, D3, D2, B7, B3, B2, B1, B0,    B5, B4, D7, D6, D4, D5, C7, E6 }
+// #define SOFT_SERIAL_PIN D0
 
 #define MOUSEKEY_INTERVAL     20
 #define MOUSEKEY_DELAY        0
