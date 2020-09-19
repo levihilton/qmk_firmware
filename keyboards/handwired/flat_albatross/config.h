@@ -30,50 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT         Flat Albatross
 #define DESCRIPTION     An ortholinear, split, flat keyboard with tiered thumb clusters that is freaking huge.
 
-#define DIODE_DIRECTION ROW2COL
+#define DIODE_DIRECTION COL2ROW
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 16
-#define COL_EXPANDED { true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false}
-#define MATRIX_ONBOARD_ROW_PINS { F0, F1, F4, F5, F6, F7, B6 }
-#define MATRIX_ONBOARD_COL_PINS { 0, 0, 0, 0, 0, 0, 0, 0, B0, B1, B2, B3, B7, D2, D3, C6 }
-#define EXPANDER_COL_REGISTER GPIOA
-#define EXPANDER_ROW_REGISTER GPIOB
-#define MATRIX_EXPANDER_COL_PINS {0, 1, 2, 3, 4, 5, 6, 7}
-#define MATRIX_EXPANDER_ROW_PINS {0, 1, 2, 3, 4, 5, 6}
-
-#define RGB_DI_PIN B5
-#define RGBLED_NUM 102
-#define RGBLIGHT_SLEEP
-#define LED_LAYOUT( \
-                                                                        \
-    L00,L01,L02,L03,L04,L05,L06,L07,                                            \
-    L10,L11,L12,L13,L14,L15,L16,L17,                                            \
-    L20,L21,L22,L23,L24,L25,L26,L27,                                            \
-    L30,L31,L32,L33,L34,L35,L36,L37,                                            \
-    L40,L41,L42,L43,L44,L45,L46,                                                \
-    L50,L51,L52,L53,L54,L55,                                                \
-                            L56,L47,                                    \
-                                L57,                                    \
-                        L65,L66,L67,                                    \
-                                                                        \
-            L08,L09,L0A,L0B,L0C,L0D,L0E,L0F,                                    \
-            L18,L19,L1A,L1B,L1C,L1D,L1E,L1F,                                    \
-            L28,L29,L2A,L2B,L2C,L2D,L2E,L2F,                                    \
-            L38,L39,L3A,L3B,L3C,L3D,L3E,L3F,                                    \
-                L49,L4A,L4B,L4C,L4D,L4E,L4F,                                    \
-                    L5A,L5B,L5C,L5D,L5E,L5F,                                    \
-    L48,L59,                                                            \
-    L58,                                                                \
-    L68,L69,L6A ) \
-    { \
-        L08,L09,L0A,L0B,L0C,L0D,L0E,L0F, \
-        L18,L19,L1A,L1B,L1C,L1D,L1E,L1F, \
-        L28,L29,L2A,L2B,L2C,L2D,L2E,L2F, \
-        L38,L39,L3A,L3B,L3C,L3D,L3E,L3F, \
-        L48,L59,L49,L4A,L4B,L4C,L4D,L4E,L4F, \
-        L58,L68,L69,L6A,L5A,L5B,L5C,L5D,L5E,L5F, \
-        L07,
-    } \
+#define MATRIX_ONBOARD_ROW_PINS { C7, D5, D4, D6, D7, B4, B5 }
+#define MATRIX_ONBOARD_COL_PINS { C6, D3, D2, D1, D0, B7, B3, E6, B5, B6, F7, F6, F5, F4, F1, F0 }
 
 #define MOUSEKEY_INTERVAL     20
 #define MOUSEKEY_DELAY        0
