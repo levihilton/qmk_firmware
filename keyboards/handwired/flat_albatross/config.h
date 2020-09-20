@@ -34,9 +34,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 16
 #define MATRIX_ROW_PINS { C7, D5, D4, D6, D7, B4, B5 }
-#define MATRIX_COL_PINS { C6, D3, D2, D1, D0, B7, B3, E6, B5, B6, F7, F6, F5, F4, F1, F0 }
+#define MATRIX_COL_PINS { C6, D3, D2, D1, D0, B7, B3, E6,   F0, F1, F4, F5, F6, F7, B6, B5}
 
 #define MOUSEKEY_INTERVAL     20
+
 #define MOUSEKEY_DELAY        0
 #define MOUSEKEY_TIME_TO_MAX  60
 #define MOUSEKEY_MAX_SPEED    7
