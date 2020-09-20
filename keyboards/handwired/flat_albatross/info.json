@@ -6,7 +6,7 @@
   "height": 8,
   "layouts": {
     "LAYOUT_flat_albatross": {
-      "key_count": 102,
+      "key_count": 110,
       "layout": [
         {"label":"k00", "x":0, "y":0}, 
         {"label":"k01", "x":1, "y":0}, 
