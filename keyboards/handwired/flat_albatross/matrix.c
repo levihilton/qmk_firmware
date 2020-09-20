@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debug.h"
 #include "util.h"
 #include "matrix.h"
-#include "albatross.h"
+#include "flat_albatross.h"
 #include "i2cmaster.h"
 #include "timer.h"
 
