@@ -6,6 +6,7 @@
 #define MOVE 3 // movement layer
 #define NUMP 4 // number pad layer
 #define MDIA 5 // media layer
+#define GAME 6 // gaming layer
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // ensure these codes start after the highest keycode defined in Quantum
@@ -32,7 +33,7 @@ enum custom_keycodes {
  *                             `----------------------------------'  `----------------------------------'
  */
 /*
-[TEMP] = LAYOUT_albatross(
+[TEMP] = LAYOUT_flat_albatross(
  TO(BASE),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
@@ -47,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,-------------------------------------------------------.                ,-------------------------------------------------------.
- * |  ESC |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                |  F7  |  F8  |  F9  | F10  | F11  | F12  |      |      |
+ * |  ESC |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                |  F7  |  F8  |  F9  | F10  | F11  | F12  |      | GAME |
  * |------+------+------+------+------+------+------+------|                |------+------+------+------+------+------+------+------|
  * |      |   `  |   1  |   2  |   3  |   4  |   5  |   6  |                |  5   |  6   |  7   |  8   |  9   |  1O  |  -   |  =   |
  * |------+------+------+------+------+------+------+------|                |------+------+------+------+------+------+------+------|
@@ -63,13 +64,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             `----------------------------------'  `----------------------------------'
  */
 [BASE] = LAYOUT_flat_albatross(  // layer 0 : default
-   KC_ESC,   KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,   KC_NO,   KC_NO,
+   KC_ESC,   KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,   KC_NO,TO(GAME),
     KC_NO,  KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                         KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL,
-    KC_NO,   KC_NO,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,TT(MOVE),                     TT(MOVE),    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,   KC_NO,
-    KC_NO,   KC_NO,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,TT(SYMB),                     TT(SYMB),    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,   KC_NO,
+    KC_NO,   KC_NO,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,MO(MOVE),                     MO(MOVE),    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,   KC_NO,
+    KC_NO,   KC_NO,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,MO(SYMB),                     MO(SYMB),    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,   KC_NO,
     KC_NO, KC_LSPO,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_LWIN, KC_CAPS,    KC_CAPS,  KC_DEL,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSPC,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_LALT, KC_LCTL, KC_BSPC,  KC_TAB,  KC_DEL,    KC_LWIN,  KC_ENT,  KC_SPC, KC_RCTL, KC_RALT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                        SH_TG,TT(NUMP),TT(MDIA),  KC_SPC,  KC_ENT,     KC_TAB, KC_BSPC,TT(MDIA),TT(NUMP),   SH_TG
+                                        KC_NO,MO(NUMP),MO(MDIA),  KC_SPC,  KC_ENT,     KC_TAB, KC_BSPC,MO(MDIA),MO(NUMP),   KC_NO
     ),
 /* Keymap 2: SYMBOLS
 `{}_=
@@ -80,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------|                 |------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |                 |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------|                 |------+------+------+------+------+------+------+------|
- * |      |      |  EQL | UNDS | LCBR | RCBR |  GRV |      |                 |      | GRV  | LCBR | RCBR | UNDS | EQL  |      |      |
+ * |      |      | BSLS | UNDS | LCBR | RCBR |  GRV |      |                 |      | GRV  | LCBR | RCBR | UNDS | BSLS  |      |      |
  * |------+------+------+------+------+------+------+------|                 |------+------+------+------+------+------+------+------|
- * |      |      | BSLS | MINS | LBRC | RBRC |      | SYMB |                 | SYMB |      | LBRC | RBRC | MINS | BSLS |      |      |
+ * |      |      |  EQL | MINS | LBRC | RBRC |      | SYMB |                 | SYMB |      | LBRC | RBRC | MINS | EQL  |      |      |
  * |------+------+------+------+------+------+------+------+------.   ,------+------+------+------+------+------+------+------+------|
  * |      |      | PIPE | PLUS |  LT  |  GT  |      | LWIN | CAPS |   | CAPS | DEL  |      |  LT  |  GT  | PLUS | PIPE |      |      |
  * |------+------+------+------+------+------+------+------+------|   |------+------+------+------+------+------+------+------+------|
@@ -94,9 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = LAYOUT_flat_albatross(
  TO(BASE),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO,  KC_EQL, KC_UNDS, KC_LCBR, KC_RCBR,  KC_GRV,   KC_NO,                        KC_NO,  KC_GRV, KC_LCBR, KC_RCBR, KC_UNDS,  KC_EQL,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO, KC_BSLS, KC_MINS, KC_LBRC, KC_RBRC,   KC_NO, KC_TRNS,                      KC_TRNS,   KC_NO, KC_LBRC, KC_RBRC, KC_MINS, KC_BSLS,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO, KC_PIPE, KC_PLUS,   KC_LT,   KC_GT,   KC_NO, KC_LWIN, KC_CAPS,    KC_CAPS,  KC_DEL,   KC_NO,   KC_NO,   KC_NO, KC_PLUS, KC_PIPE,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO, KC_BSLS, KC_UNDS, KC_LCBR, KC_RCBR,  KC_GRV,   KC_NO,                        KC_NO,  KC_GRV, KC_LCBR, KC_RCBR, KC_UNDS, KC_BSLS,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,  KC_EQL, KC_MINS, KC_LBRC, KC_RBRC,   KC_NO, KC_TRNS,                      KC_TRNS,   KC_NO, KC_LBRC, KC_RBRC, KC_MINS,  KC_EQL,   KC_NO,   KC_NO,
+    KC_NO, KC_TRNS, KC_PIPE, KC_PLUS,   KC_LT,   KC_GT,   KC_NO, KC_LWIN, KC_CAPS,    KC_CAPS,  KC_DEL,   KC_NO,   KC_NO,   KC_NO, KC_PLUS, KC_PIPE,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_LALT, KC_LCTL, KC_BSPC,  KC_TAB,  KC_DEL,    KC_LWIN,  KC_ENT,  KC_SPC, KC_RCTL, KC_RALT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                         KC_NO ,   KC_NO,   KC_NO,  KC_SPC,  KC_ENT,     KC_TAB, KC_BSPC,   KC_NO,   KC_NO,   KC_NO
 ),
@@ -180,6 +181,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                         KC_NO,   KC_NO, KC_TRNS,   KC_NO,   KC_NO,      KC_NO,   KC_NO, KC_TRNS,   KC_NO,   KC_NO
+),
+/* Keymap N: Template Layer
+ *
+ * ,-------------------------------------------------------.                ,-------------------------------------------------------.
+ * |  ESC |      |      |      |      |      |      |      |                |      |      |      |      |      |      |      | BASE |
+ * |------+------+------+------+------+------+------+------|                |------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |                |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------|                |------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |   Y  |                |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------|                |------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |   H  |                |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------|  |------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |  SPC |      |      |  |      |      |      |      |      |      |      |      |      |
+ * `---------------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------------'
+ *                             |      |      |      | BSPC |      |  |      |      |      |      |      |
+ *                             `----------------------------------'  `----------------------------------'
+ */
+[GAME] = LAYOUT_flat_albatross(
+   KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,TO(BASE),
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_Y,                        KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_H,                        KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_SPC, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                      KC_TRNS,   KC_NO,   KC_NO, KC_BSPC, KC_TRNS,    KC_TRNS, KC_TRNS,   KC_NO,   KC_NO, KC_TRNS
 ),
 };
 
